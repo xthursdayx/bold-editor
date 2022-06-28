@@ -47,7 +47,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      stylekit: path.join(__dirname, 'node_modules/sn-stylekit/dist/stylekit.css'),
+      stylekit: require.resolve('sn-stylekit/dist/stylekit.css'),
       '@Components': path.resolve(__dirname, 'app/components'),
     }
   },
@@ -62,7 +62,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: './node_modules/@standardnotes/editor-kit/dist/filesafe-js/EncryptionWorker.js', to: 'filesafe-js/EncryptionWorker.js' },
+        { from: require.resolve('@standardnotes/editor-kit/dist/filesafe-js/EncryptionWorker.js'), to: 'filesafe-js/EncryptionWorker.js' },
       ],
     }),
     new MergeIntoSingleFilePlugin({
@@ -72,7 +72,7 @@ module.exports = {
           'redactor/plugins/**/*.min.js',
         ],
         "vendor.css": [
-          'node_modules/filesafe-embed/dist/dist.css',
+          require.resolve('filesafe-embed/dist/dist.css'),
           'redactor/src/redactor.min.css',
           'redactor/plugins/inlinestyle/inlinestyle.min.css'
         ]
